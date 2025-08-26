@@ -1,6 +1,8 @@
 import university.*;
 import university.Class;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         /*Inicialización de profesores*/
@@ -13,8 +15,8 @@ public class Main {
         // Esta vez decido instanciarlos por separado, ya que me sirve para tener las referencias y asignar estudiantes y profesores a clases
         Teacher fullTime1 = new FullTimeTeacher("José", 1423000f, 3f);
         Teacher fullTime2 = new FullTimeTeacher("María", 1800000, 5f);
-        Teacher partTime1 = new PartTimeTeacher("Paola", 1423000f, 25f);
-        Teacher partTime2 = new PartTimeTeacher("Andrés", 1720000, 30f);
+        Teacher partTime1 = new PartTimeTeacher("Paola", 70000, 25f);
+        Teacher partTime2 = new PartTimeTeacher("Andrés", 95000, 30f);
         University.addTeacher(fullTime1);
         University.addTeacher(fullTime2);
         University.addTeacher(partTime1);
@@ -72,8 +74,100 @@ public class Main {
         class4.addStudent(student7);
 
         University.addClass(class4);
+        Scanner sc = new Scanner(System.in);
+        int option;
+        System.out.println("Bienvenido al sistema de la universidad");
+        do{
+            System.out.println("¿Que desea hacer?");
+            System.out.println("1. Mostrar profesores");
+            System.out.println("2. Ver clases");
+            System.out.println("3. Crear y agregar estudiante a clase");
+            System.out.println("4. Crear clase");
+            System.out.println("5. Listar clases por estudiante");
+            System.out.println("6. Salir");
+            System.out.print("Digite una opción: ");
+            option = sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 1:
+                    System.out.println("Listado de profesores");
+                    for (int i = 0; i<University.getTeachersCount(); i++) {
+                        Teacher t = University.getTeacher(i);
+                        System.out.println((i+1)+". " + t);
+                    }
+                    break;
+                case 2: {
+                    int option2;
+                    Class selectedClass = null;
+                    do{
+                        System.out.println("Seleccione una clase para ver más información");
+                        int classesCount = University.getClassesCount();
+                        for (int i = 0; i<classesCount; i++) {
+                            Class c = University.getClass(i);
+                            System.out.println((i+1)+". " + c);
+                        }
+                        System.out.println(University.getClassesCount()+1 + ". Volver");
+                        option2 = sc.nextInt();
+                        if(option2>=1 && option2 <= classesCount){
+                            selectedClass = University.getClass(option2 - 1);
+                        }else if (option2 == classesCount + 1) break;
+                        else System.out.println("Opcion no válida");
+                    }while(selectedClass==null);
+                    if (selectedClass != null) System.out.println(selectedClass.extraInfo());
+                    break;
+                }
+                case 3:{
+                    String id, name;
+                    int age;
 
-        
+                    System.out.print("Introduce el ID del estudiante: ");
+                    id = sc.nextLine();
+                    if (id.isEmpty() || University.getStudent(id) != null) {
+                        System.out.println("La ID ingresada no es válida");
+                        break;
+                    }
+                    System.out.print("Introduce el nombre del estudiante: ");
+                    name = sc.nextLine();
+                    if (name.isEmpty()) {
+                        System.out.println("El nombre no puede estar vacío");
+                        break;
+                    }
+                    System.out.print("Introduce el edad del estudiante: ");
+                    age = sc.nextInt();
+                    if (age<1 || age>100) {
+                        System.out.println("La edad ingresada no es válida");
+                        break;
+                    }
+                    Student newStudent = new Student(id, name, age);
+                    University.addStudent(newStudent);
+
+
+                    int option2;
+                    Class selectedClass = null;
+                    do{
+                        int classesCount = University.getClassesCount();
+                        System.out.println("Seleccione una clase para agregar al estudiante");
+                        for (int i = 0; i<classesCount; i++) {
+                            Class c = University.getClass(i);
+                            System.out.println((i+1)+". " + c);
+                        }
+                        System.out.println(University.getClassesCount()+1 + ". Volver");
+                        option2 = sc.nextInt();
+                        if(option2>=1 && option2 <= classesCount){
+                            selectedClass = University.getClass(option2 - 1);
+                        }else if (option2 == classesCount + 1) break;
+                        else System.out.println("Opcion no válida");
+                    }while(selectedClass==null);
+                    if (selectedClass != null) {
+                        selectedClass.addStudent(newStudent);
+                        System.out.println("Estudiante agregado a la clase " +  selectedClass.getName());
+                    }
+                }
+
+                default:
+                    System.out.println("Opción inválida");
+            }
+        }while(option != 6);
 
     }
 }
