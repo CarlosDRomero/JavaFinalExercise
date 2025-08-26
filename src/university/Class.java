@@ -9,10 +9,9 @@ public class Class {
     Teacher teacher;
     List<Student>  students;
 
-    public Class(String name, String classRoom, Teacher teacher) {
+    public Class(String name, String classRoom) {
         this.name = name;
         this.classRoom = classRoom;
-        this.teacher = teacher;
         this.students = new ArrayList<>();
     }
 
