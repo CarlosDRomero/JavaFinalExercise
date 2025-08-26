@@ -1,5 +1,6 @@
 package university;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Class {
@@ -12,6 +13,7 @@ public class Class {
         this.name = name;
         this.classRoom = classRoom;
         this.teacher = teacher;
+        this.students = new ArrayList<>();
     }
 
     public String getName() {
