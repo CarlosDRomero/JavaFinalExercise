@@ -8,9 +8,12 @@ public class University {
     private static List<Teacher> teachers = new ArrayList<>();
     private static List<Class>  classes = new ArrayList<>();
 
+    public static void addStudent(Student s) {
+        students.add(s);
+    }
     public static void addStudent(String name, String id, int age) {
         Student student = new Student(name, id, age);
-        students.add(student);
+        addStudent(student);
     }
     public static void removeStudent(Student student) {
         students.remove(student);
@@ -22,6 +25,9 @@ public class University {
             }
         }
     }
+    public static void addTeacher(Teacher t) {
+        teachers.add(t);
+    }
     public static void addTeacher(String name, float baseSalary, float other, boolean fullTime) {
         Teacher teacher;
         if  (fullTime) {
@@ -29,14 +35,17 @@ public class University {
         }else{
             teacher = new PartTimeTeacher(name, baseSalary, other);
         }
-        teachers.add(teacher);
+        addTeacher(teacher);
     }
     public static void removeTeacher(Teacher teacher) {
         teachers.remove(teacher);
     }
+    public static void addClass(Class c){
+        classes.add(c);
+    }
     public static void addClass(String name, String classRoom) {
         Class c = new Class(name, classRoom);
-        classes.add(c);
+        addClass(c);
     }
     public static void removeClass(Class c) {
         classes.remove(c);
