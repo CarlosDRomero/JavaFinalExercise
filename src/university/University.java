@@ -8,6 +8,27 @@ public class University {
     private static List<Teacher> teachers = new ArrayList<>();
     private static List<Class>  classes = new ArrayList<>();
 
+    public static List<Student> getStudents() {
+        return students;
+    }
+
+    public static List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public static List<Class> getClasses() {
+        return classes;
+    }
+    public static int getStudentsCount() {
+        return students.size();
+    }
+    public static int getTeachersCount() {
+        return teachers.size();
+    }
+    public static int getClassesCount() {
+        return classes.size();
+    }
+
     public static void addStudent(Student s) {
         students.add(s);
     }

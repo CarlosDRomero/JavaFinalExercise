@@ -11,4 +11,8 @@ public class FullTimeTeacher extends Teacher{
     float calculateSalary() {
         return getBaseSalary() * experienceYears * 1.1f;
     }
+
+    public String toString() {
+        return super.toString() + ", a tiempo completo";
+    }
 }

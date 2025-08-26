@@ -11,4 +11,7 @@ public class PartTimeTeacher extends Teacher{
     float calculateSalary() {
         return getBaseSalary() * activeHoursPerWeek;
     }
+    public String toString() {
+        return super.toString() + ", por horas semanales";
+    }
 }

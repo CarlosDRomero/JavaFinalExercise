@@ -55,4 +55,15 @@ public class Class {
             }
         }
     }
+    public String toString() {
+        return "Nombre: " + name + ", class room: " + classRoom;
+    }
+    public String extraInfo() {
+        StringBuilder extraInfo = new StringBuilder("Profesor - " + teacher + "\nEstudiantes:\n");
+        for (int i = 0; i < students.size(); i++) {
+            String line = (i+1) + ". " + students.get(i) + "\n";
+            extraInfo.append(line);
+        }
+        return extraInfo.toString();
+    }
 }

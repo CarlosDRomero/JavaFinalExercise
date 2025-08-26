@@ -23,4 +23,8 @@ public abstract class Teacher {
     }
 
     abstract float calculateSalary();
+
+    public String toString() {
+        return "Nombre: " + name + ", salario base: " + baseSalary + ", salario final: " + calculateSalary();
+    }
 }
