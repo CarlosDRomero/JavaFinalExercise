@@ -45,6 +45,14 @@ public class Class {
     public void addStudent(Student student) {
         this.students.add(student);
     }
+    public Student getStudent(String id){
+        for (Student s: students){
+            if(s.getId().equals(id)){
+                return s;
+            }
+        }
+        return null;
+    }
     public void removeStudent(Student student) {
         this.students.remove(student);
     }
