@@ -23,6 +23,14 @@ public abstract class Menu {
         this.options = options;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public void setOptions(String[] options) {
         for (String option : options) {
             this.options.add(option);
@@ -31,7 +39,6 @@ public abstract class Menu {
 
     public String optionsString() {
         StringBuilder optionsString = new StringBuilder();
-        optionsString.append(title).append("\n");
         int lastIndex;
         for (lastIndex  = 1; lastIndex < options.size() + 1; lastIndex++) {
             optionsString.append(lastIndex).append(". ").append(options.get(lastIndex -1)).append("\n");

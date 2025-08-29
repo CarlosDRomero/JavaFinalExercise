@@ -1,9 +1,6 @@
 import university.*;
 import university.Class;
-import utils.ConsoleController;
-import utils.MainMenu;
-import utils.Menu;
-import utils.MenuController;
+import utils.*;
 
 import java.util.Scanner;
 
@@ -81,7 +78,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int option;
         System.out.println("Bienvenido al sistema de la universidad");
-        MenuController menuController = new ConsoleController();
+//        MenuController menuController = new ConsoleController();
+        MenuController menuController = new JOptionController();
         Menu mainMenu = new MainMenu(menuController);
         mainMenu.run();
 //        do{
